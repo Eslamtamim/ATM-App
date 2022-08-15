@@ -30,7 +30,7 @@ namespace AAAA.Models
         [StringLength(50)]
         [Unicode(false)]
         public string? City { get; set; }
-        [Column(TypeName = "decimal(6, 2)")]
+        [Column(TypeName = "decimal(38, 2)")]
         public decimal? Balance { get; set; }
     }
 }

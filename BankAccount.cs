@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using AAAA.Data;
 using AAAA.Models;
+using AAAA;
+
 
 
 namespace AAAA
@@ -25,37 +27,40 @@ namespace AAAA
         //    this.Balance = balance;
 
         //}
-        public static void Withdraw(Account Account) {
+        public static void Withdraw(Account a) {
 
             Console.Write("\nHow much are you willing to take : ");
             int Amount = int.Parse(Console.ReadLine());
-            Account.Balance -= Amount;
-            Console.WriteLine($"\nYou did a withdraw with {Amount} now your Balance goes from {Amount + Account.Balance} to {Account.Balance}\nThanks for using our service");
-            Console.WriteLine("\nCurrent balance now is " + Account.Balance);
+            a.Balance -= Amount;
+            Console.WriteLine($"\nYou did a withdraw with {Amount} now your Balance goes from {Amount + a.Balance} to {a.Balance}\nThanks for using our service");
+            Console.WriteLine("\nCurrent balance now is " + a.Balance);
 
 
         }
-        public static void Deposit(Account Account) {
+        public static void Deposit(Account a) {
             Console.WriteLine("Enter the cash amount to deposit:");
             int Amount = int.Parse(Console.ReadLine());
-            Account.Balance += Amount;
+            a.Balance += Amount;
             Console.WriteLine("Cash Deposited Successfully.");
             
         }
-        public static void Transfer(Account Account) {
+        public static void Transfer(Account a) {
 
             Console.Write("\nHow much are you willing to transfer : ");
             int Amount = int.Parse(Console.ReadLine());
             Console.WriteLine("\nEnter the account ID or PhoneNumber you want to send moeny : ");
             string AccountToTrancefer = Console.ReadLine();
-            Account.Balance -= Amount;
+            
+            //still in progress 
+            
+            a.Balance -= Amount;
 
             Console.WriteLine("Transaction confirmed.");
         }
-        public static void DisplayBalance(Account Account) {
+        public static void DisplayBalance(Account a) {
 
-            Console.WriteLine($"\nHello Me.{Account.FirstName}");
-            Console.WriteLine($"Balance: {Account.Balance}");
+            Console.WriteLine($"\nHello Me.{a.FirstName}");
+            Console.WriteLine($"Balance: {a.Balance}");
             Console.WriteLine($"\nDate: {DateTime.Now}");
 
         }

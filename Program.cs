@@ -1,4 +1,9 @@
-﻿using AAAA.Data;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using AAAA.Data;
 using AAAA.Models;
 using AAAA;
 using ATMdbContext context = new ATMdbContext();
@@ -22,16 +27,33 @@ while (true) {
 
             Console.Write("PIN : ");
             int PIN = int.Parse(Console.ReadLine());
+
+            //idk why its not working yet
+
+            //var login = from Account in context.Accounts
+            //            where Account.Pin == PIN && Account.Id == ID
+            //            select Account;
+            //AccMethods(login);
+
+            Account CurrentAcc = new Account(); 
             foreach (var Account in Accounts)
             {
                 if (Account.Id == ID && Account.Pin == PIN)
                 {
                     AccMethods(Account);
+                    CurrentAcc = Account;
                     break;
                 }
-              
-                
-            }break;
+
+            }
+
+            if(CurrentAcc.Id == null)
+            {
+                Console.WriteLine("your Id or Pin is incorrect Please try again");
+             
+            }
+            else { break; }
+
         }
         break;
     }
@@ -85,36 +107,38 @@ while (true) {
 
 void AccMethods(Account account)
 {
-    Console.WriteLine("\n1----Withdraw Cash");
-    Console.WriteLine("2----Deposit Cash");
-    Console.WriteLine("3----Cash Transfer");
-    Console.WriteLine("4----Display Balance");
-    Console.WriteLine("5----Exit\n");
-    Console.Write("Please select one of the above options: ");
 
-    int menu = int.Parse(Console.ReadLine());
 
+    int menu =0;
     while (menu <= 5)
     {
+        Console.WriteLine("\n1----Withdraw Cash");
+        Console.WriteLine("2----Deposit Cash");
+        Console.WriteLine("3----Cash Transfer");
+        Console.WriteLine("4----Display Balance");
+        Console.WriteLine("5----Exit\n");
+        Console.Write("Please select one of the above options: ");
+        menu = int.Parse(Console.ReadLine());
+
         if (menu == 1)
         {
             BankAccount.Withdraw(account);
-            menu = int.Parse(Console.ReadLine());
+            
         }
         else if (menu == 2)
         {
             BankAccount.Deposit(account);
-            menu = int.Parse(Console.ReadLine());
+            
         }
         else if (menu == 3)
         {
             BankAccount.Transfer(account);
-            menu = int.Parse(Console.ReadLine());
+            
         }
         else if (menu == 4)
         {
             BankAccount.DisplayBalance(account);
-            menu = int.Parse(Console.ReadLine());
+            
         }
         else if (menu == 5)
         {
