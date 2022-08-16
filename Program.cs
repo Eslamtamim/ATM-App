@@ -22,38 +22,38 @@ while (true) {
     {
         while (true)
         {
+            
+            //idk why its not working yet
+            //var login = from Account in context.Accounts
+            //            where Account.Pin == PIN && Account.Id == ID
+            //            select Account;
+            ///////////////////////////////////////////////////////////////////////////////
+            //foreach (var Account in Accounts)
+            //{
+            //    if (Account.Id == ID && Account.Pin == PIN)
+            //    {
+            //        AccMethods(Account);
+            //        CurrentAcc = Account;
+            //        break;
+            //    }
+            //}
+
+
             Console.WriteLine("ID : ");
             String ID = Console.ReadLine();
 
             Console.Write("PIN : ");
             int PIN = int.Parse(Console.ReadLine());
 
-            //idk why its not working yet
 
-            //var login = from Account in context.Accounts
-            //            where Account.Pin == PIN && Account.Id == ID
-            //            select Account;
-            //AccMethods(login);
+            var login = context.Accounts.Where(a => a.Id == ID && a.Pin == PIN).FirstOrDefault();
 
-            Account CurrentAcc = new Account(); 
-            foreach (var Account in Accounts)
+            if (login != null)
             {
-                if (Account.Id == ID && Account.Pin == PIN)
-                {
-                    AccMethods(Account);
-                    CurrentAcc = Account;
-                    break;
-                }
-
+                AccMethods(login);
+                break;
             }
-
-            if(CurrentAcc.Id == null)
-            {
-                Console.WriteLine("your Id or Pin is incorrect Please try again");
-             
-            }
-            else { break; }
-
+            else { Console.WriteLine("your Id or Pin is incorrect Please try again"); }
         }
         break;
     }

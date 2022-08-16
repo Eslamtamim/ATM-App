@@ -25,7 +25,6 @@ namespace AAAA
         //    this.email = email;
         //    this.City = city;
         //    this.Balance = balance;
-
         //}
         public static void Withdraw(Account a) {
 
