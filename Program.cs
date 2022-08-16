@@ -137,11 +137,11 @@ void AccMethods(Account account)
             while (true)
             {
                 Console.WriteLine("please enter the Account id, PhoneNumber or email you want to trancfer to");
-                string AccountToTrancefer = Console.ReadLine();
-                var trancferacc = context.Accounts.Where(a => a.Id == AccountToTrancefer || a.Id == AccountToTrancefer || a.Id == AccountToTrancefer).FirstOrDefault();
-                if (trancferacc != null)
+                string AccountToTransfer = Console.ReadLine();
+                var transferacc = context.Accounts.Where(a => a.Id == AccountToTransfer || a.Id == AccountToTransfer || a.Id == AccountToTransfer).FirstOrDefault();
+                if (transferacc != null)
                 {
-                    BankAccount.Transfer(account, trancferacc);
+                    BankAccount.Transfer(account, transferacc);
                     break;
                 }
                 else
