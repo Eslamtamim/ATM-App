@@ -8,6 +8,7 @@ using AAAA.Models;
 using AAAA;
 using ATMdbContext context = new ATMdbContext();
 var Accounts = context.Accounts;
+
 var account = new Account();
 
 Console.WriteLine("Hi and welcome to our banking system\ndo you have an account or would you like to create one?");
@@ -47,6 +48,7 @@ while (true) {
 
 
             var login = context.Accounts.Where(a => a.Id == ID && a.Pin == PIN).FirstOrDefault();
+           
 
             if (login != null)
             {
@@ -132,7 +134,23 @@ void AccMethods(Account account)
         }
         else if (menu == 3)
         {
-            BankAccount.Transfer(account);
+            while (true)
+            {
+                Console.WriteLine("please enter the Account id, PhoneNumber or email you want to trancfer to");
+                string AccountToTrancefer = Console.ReadLine();
+                var trancferacc = context.Accounts.Where(a => a.Id == AccountToTrancefer || a.Id == AccountToTrancefer || a.Id == AccountToTrancefer).FirstOrDefault();
+                if (trancferacc != null)
+                {
+                    BankAccount.Transfer(account, trancferacc);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("There is no Account with this info please try again");
+                }
+
+            }
+           
             
         }
         else if (menu == 4)

@@ -43,17 +43,12 @@ namespace AAAA
             Console.WriteLine("Cash Deposited Successfully.");
             
         }
-        public static void Transfer(Account a) {
+        public static void Transfer(Account a, Account b) {
 
             Console.Write("\nHow much are you willing to transfer : ");
             int Amount = int.Parse(Console.ReadLine());
-            Console.WriteLine("\nEnter the account ID or PhoneNumber you want to send moeny : ");
-            string AccountToTrancefer = Console.ReadLine();
-            
-            //still in progress 
-            
             a.Balance -= Amount;
-
+            b.Balance += Amount;
             Console.WriteLine("Transaction confirmed.");
         }
         public static void DisplayBalance(Account a) {
